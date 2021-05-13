@@ -1,6 +1,6 @@
-## NgBilling Admin for Mobile Network Operators And MVNO's. React front end communicate with NgBilling to setup Organization and resellers. This is base setup application for default ngbilling database. Admin dashboard application is based on React-Admin.
+## NgBilling Admin for Mobile Network Operators And MVNO's.
 
-NgBilling Admin initialize the Organization setup for you: 
+NgBilling Admin initialize the Organization setup for you. React front end communicate with NgBilling to setup Organization and resellers. This is base setup application for default ngbilling database. Admin dashboard application is based on React-Admin and is available in separate repository.
 
 - Create the Admin User for the Organization
 - Initialize default roles like Customer,Staff
