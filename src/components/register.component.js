@@ -357,8 +357,7 @@ export default class Register extends Component {
       languageMandatory:""
     });
    }
-    alert(myArr.length);
-    if (this.checkBtn.context._errors.length === 0&&myArr.length===0) {
+   if (this.checkBtn.context._errors.length === 0&&myArr.length===0) {
       AuthService.register(
         this.state.userName,
         this.state.contact,
