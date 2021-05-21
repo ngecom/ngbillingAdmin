@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import axios from 'axios';
 
 import AuthService from "./services/auth.service";
 
@@ -22,12 +23,18 @@ class App extends Component {
       showModeratorBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
+      allowSignup:false
     };
+    this.isAllowSignup = this.isAllowSignup.bind(this)
+  }
+
+  componentWillMount(){
+    this.isAllowSignup();
   }
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
-
+    this.isAllowSignup();
     if (user) {
       this.setState({
         currentUser: user,
@@ -41,8 +48,14 @@ class App extends Component {
     AuthService.logout();
   }
 
+  async isAllowSignup() {    
+    const res = await axios.get('http://localhost:8080/api/util/allowSignup')
+    const data = res.data
+    this.setState({allowSignup: data})
+  }
+
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser, showModeratorBoard, showAdminBoard, allowSignup } = this.state;
 
     return (
       <div>
@@ -101,9 +114,15 @@ class App extends Component {
               </li>
 
               <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
+              {
+                  allowSignup
+                  ?<Link to={"/register"} className="nav-link">
+                    Sign Up
+                  </Link>
+                  :<Link to={"/register"} id="nav-link-disable" className="nav-link" onClick={ (event) => event.preventDefault() }>
+                    Sign Up
+                  </Link>
+                }
               </li>
             </div>
           )}

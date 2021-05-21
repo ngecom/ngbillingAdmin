@@ -40,3 +40,7 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+#nav-link-disable { 
+  pointer-events: none;
+}
