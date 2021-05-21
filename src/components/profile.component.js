@@ -46,8 +46,8 @@ export default class Profile extends Component {
           {currentUser.id}
         </p>
         <p>
-          <strong>Email:</strong>{" "}
-          {currentUser.email}
+          <strong>Organization Name:</strong>{" "}
+          {currentUser.organization}
         </p>
         <strong>Authorities:</strong>
         <ul>
